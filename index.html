@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOS: план работ</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/doc.css">
+<style>
+.tasks{display:grid;gap:12px}
+@media(min-width:760px){.tasks{grid-template-columns:1fr 1fr}}
+.task{display:flex;flex-direction:column;background:var(--paper);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--ink);box-shadow:0 1px 2px #0f17200d,0 6px 24px -12px #0f172026;transition:transform .2s ease,box-shadow .2s ease}
+.task:hover{transform:translateY(-2px);box-shadow:0 2px 4px #0f172014,0 14px 30px -14px #0f172040;color:var(--ink)}
+.task .num{font:700 13px/1 var(--head);color:var(--signal-ink);margin:0 0 10px}
+.task h3{font:700 19px/1.15 var(--head);margin:0 0 8px}
+.task p{font-size:15px;color:var(--ink-2);margin:0 0 14px}
+.task .go{margin-top:auto;display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--signal-ink)}
+.task .go svg{width:14px;height:14px}
+.task.big{grid-column:1/-1}
+@media(min-width:760px){.task.big{flex-direction:row;gap:24px;align-items:stretch}.task.big .im{flex:0 0 42%}.task.big .bd{display:flex;flex-direction:column}}
+.task .im{border-radius:8px;overflow:hidden;margin:0 0 14px;aspect-ratio:16/10;background:var(--ice)}
+@media(min-width:760px){.task.big .im{margin:0;aspect-ratio:auto}}
+.task .im img{width:100%;height:100%;object-fit:cover}
+.road{display:grid;gap:12px}
+@media(min-width:760px){.road{grid-template-columns:repeat(3,1fr)}}
+.road .card h3{font:700 16px/1.2 var(--head)}
+.road ul{padding-left:18px;margin:0}
+.road li{font-size:15px}
+</style>
+</head>
+<body>
+<div class="top"><div class="in">
+  <a class="logo" href="index.html"><i></i>SOS</a>
+  <nav>
+    <a href="index.html" aria-current="page">План</a>
+    <a href="shop/">Магазин</a>
+    <a href="pismo.html">Письмо</a>
+    <a href="yur.html">ИП и документы</a>
+    <a href="smm.html">Инстаграм</a>
+    <a href="baza.html">База</a>
+  </nav>
+</div></div>
+
+<main class="wrap">
+<header class="hero">
+  <p class="kicker">После встречи 25 октября</p>
+  <h1>План работ по SOS</h1>
+  <p class="lead">Всё, что Макс поручил на встрече, разложено по задачам. По каждой есть готовый материал или разбор, а ниже то, что нужно от Макса, чтобы двигаться дальше.</p>
+</header>
+
+<section>
+  <h2>Что сделано</h2>
+  <div class="tasks">
+    <a class="task big" href="baza.html">
+      <div class="im"><img src="img/sat_close.jpg" alt="Спутниковый снимок базы СибГУФК" style="object-position:50% 45%"></div>
+      <div class="bd">
+        <p class="num">База СибГУФК</p>
+        <h3>Разбор объекта и концепт базы</h3>
+        <p>Кому принадлежит, территория, рельеф, ЛЭП и водоохранная зона, схема зон на снимке, порядок цифр по инвестициям, статус по чек-листу Катерины и структура презентации для администрации. Главный вывод: решают университет и Минспорт России, администрация нужна как союзник.</p>
+        <span class="go">Открыть разбор <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></span>
+      </div>
+    </a>
+    <a class="task" href="shop/">
+      <p class="num">Сайт одежды</p>
+      <h3>Демо-сайт магазина</h3>
+      <p>Макет для писем: главная, каталог, раздел бренда, карточка товара, блок про офлайн-магазин у склона. Работает на телефоне.</p>
+      <span class="go">Открыть сайт <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></span>
+    </a>
+    <a class="task" href="pismo.html">
+      <p class="num">Сайт одежды</p>
+      <h3>Письмо поставщикам</h3>
+      <p>Письмо на почту, сообщение в мессенджер, напоминание и Excel-шаблон карточек товаров. Копируются одной кнопкой.</p>
+      <span class="go">Открыть тексты <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></span>
+    </a>
+    <a class="task" href="smm.html">
+      <p class="num">Семья в инстаграме</p>
+      <h3>Стратегия: семья Снегирёвых</h3>
+      <p>Персонажи, лор «Снежа, найди», линия про физический магазин, рубрики, контент-план на месяц, сценарии. И важное: запрет рекламы в Instagram с сентября 2025 года.</p>
+      <span class="go">Открыть стратегию <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></span>
+    </a>
+    <a class="task" href="yur.html">
+      <p class="num">Юридические вопросы</p>
+      <h3>ИП, самозанятость и документы</h3>
+      <p>Самозанятость не подходит, лучше вести магазин через ООО. Налог, касса, маркировка, что обязательно на сайте, персональные данные, порядок шагов.</p>
+      <span class="go">Открыть памятку <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<section class="narrow">
+  <h2>Что нужно от Макса</h2>
+  <ol class="steps">
+    <li><strong>Срок регистрации ООО.</strong> Если в ближайший месяц, магазин сразу на ООО. Если позже, открываем ИП для старта.</li>
+    <li><strong>Телефон и почта для писем</strong> и подтверждение, кому пишем в первую очередь.</li>
+    <li><strong>Выписка ЕГРН по базе</strong> на Госуслугах. Без неё нельзя идти ни к ректору, ни в администрацию.</li>
+    <li><strong>Полное сообщение Катерины</strong>, если там было больше, чем список исходных данных. И кто она в проекте: архитектор, проектировщик?</li>
+    <li><strong>Выезд на базу</strong> с фото и видео по чек-листу (стороны света, подъезды, корпуса, ЛЭП, пруды).</li>
+    <li><strong>Одобрить семью Снегирёвых</strong>: имена, характеры, фамилию. После этого делаем листы персонажей.</li>
+    <li><strong>Решение по настоящему сайту:</strong> домен, платформа, кто ведёт. Демо-сайт только макет.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Дорожная карта</h2>
+  <div class="road">
+    <div class="card">
+      <h3>Эта неделя</h3>
+      <ul>
+        <li>Разослать письма российским поставщикам</li>
+        <li>Заказать выписку ЕГРН</li>
+        <li>Утвердить персонажей семьи</li>
+        <li>Решить ООО или ИП для магазина</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>2-4 недели</h3>
+      <ul>
+        <li>Регистрация компании, касса, «Честный знак»</li>
+        <li>Первые карточки от поставщиков</li>
+        <li>Листы персонажей, 8 рилсов в запас</li>
+        <li>Выезд на базу, встреча с ректором</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Второй месяц</h3>
+      <ul>
+        <li>Настоящий сайт с реальными товарами</li>
+        <li>Запуск аккаунтов семьи</li>
+        <li>КП на подъёмник, оснежение, покрытие</li>
+        <li>Презентация для администрации</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">Рабочие материалы для Макса, 25.10.2026. Страницы закрыты от поисковиков, но открываются по ссылке у любого, у кого она есть.</footer>
+</main>
+</body>
+</html>

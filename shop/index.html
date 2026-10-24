@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOS: горнолыжная экипировка, Омск</title>
+<meta name="description" content="Демо-версия интернет-магазина горнолыжной одежды и снаряжения SOS, Омск.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1720;--ink2:#2a3540;--mut:#66727b;--line:#e2e6e8;--bg:#f6f7f6;--paper:#fff;--sig:#ff4f00;--sig2:#c23a00;--ice:#e6eff2;--head:"Unbounded",system-ui,sans-serif;--body:"Onest",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+.w{max-width:1240px;margin:0 auto;padding:0 16px}
+
+.demo{background:var(--ink);color:#cfd7dc;font-size:13px;text-align:center;padding:7px 16px}
+.demo b{color:#fff;font-weight:600}
+
+.hd{position:sticky;top:0;z-index:30;background:#fffffff2;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd .w{display:flex;align-items:center;gap:20px;height:60px}
+.logo{font:700 22px/1 var(--head);letter-spacing:.01em;display:flex;align-items:center;gap:7px}
+.logo i{width:9px;height:9px;border-radius:50%;background:var(--sig)}
+.hd nav{display:none;gap:22px;font-size:15px;color:var(--ink2)}
+.hd nav a:hover{color:var(--sig2)}
+.hd .ic{margin-left:auto;display:flex;gap:6px}
+.hd .ic button{width:40px;height:40px;border:0;background:none;border-radius:8px;display:grid;place-items:center;cursor:pointer;position:relative}
+.hd .ic button:hover{background:var(--bg)}
+.hd .ic svg{width:21px;height:21px}
+.hd .ic .cnt{position:absolute;top:5px;right:4px;min-width:16px;height:16px;border-radius:8px;background:var(--sig);color:#fff;font:600 10px/16px var(--body);padding:0 4px}
+@media(min-width:900px){.hd nav{display:flex}}
+
+.hero{position:relative;overflow:hidden;background:#dfe7ec}
+.hero img{width:100%;height:min(78vh,640px);min-height:440px;object-fit:cover;object-position:70% 60%}
+.hero .tx{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(28px,6vw,70px)}
+.hero h1{font:700 clamp(32px,6.4vw,76px)/.9 var(--head);letter-spacing:-.03em;margin:0 0 16px;max-width:11ch;color:var(--ink)}
+.hero p{font-size:clamp(16px,1.6vw,19px);max-width:34ch;margin:0 0 22px;color:var(--ink2)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:14px 22px;font:600 15px/1 var(--body);cursor:pointer}
+.btn:hover{background:var(--sig2)}
+.btn svg{width:14px;height:14px}
+
+.cats{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats a{flex:none;padding:10px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:14px;font-weight:500;white-space:nowrap}
+.cats a:hover,.cats a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.sec{padding:48px 0}
+.sec h2{font:700 clamp(24px,3.6vw,38px)/1 var(--head);letter-spacing:-.02em;margin:0 0 6px}
+.sec .sub{color:var(--mut);margin:0 0 24px;max-width:56ch}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 12px}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr);gap:28px 18px}}
+.pc{position:relative}
+.pc .ph{position:relative;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--ice)}
+.pc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.pc:hover .ph img{transform:scale(1.03)}
+.pc .badge{position:absolute;left:8px;top:8px;background:#fff;border-radius:6px;padding:4px 7px;font:600 11px/1 var(--body)}
+.pc .badge.t{background:var(--ink);color:#fff}
+.pc .fav{position:absolute;right:6px;top:6px;width:34px;height:34px;border-radius:50%;border:0;background:#ffffffd9;display:grid;place-items:center;cursor:pointer}
+.pc .fav svg{width:17px;height:17px}
+.pc .fav.on svg{fill:var(--sig);stroke:var(--sig)}
+.pc .br{font:600 11px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:12px 0 5px}
+.pc h3{font:500 15px/1.3 var(--body);margin:0 0 6px}
+.pc .pr{font:700 16px/1 var(--head)}
+.pc .sz{display:flex;gap:4px;margin-top:9px;flex-wrap:wrap}
+.pc .sz span{font-size:12px;border:1px solid var(--line);border-radius:5px;padding:3px 6px;color:var(--ink2)}
+
+.brand{display:grid;gap:0;background:var(--ink);color:#fff;border-radius:14px;overflow:hidden}
+@media(min-width:900px){.brand{grid-template-columns:1.1fr 1fr}}
+.brand .im{min-height:280px;position:relative}
+.brand .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.brand .bt{padding:clamp(22px,4vw,48px)}
+.brand .lbl{display:inline-block;font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--sig);margin-bottom:16px}
+.brand h2{color:#fff}
+.brand p{color:#c9d2d8;max-width:46ch}
+.brand ul{list-style:none;padding:0;margin:18px 0 24px;display:grid;gap:10px}
+.brand li{display:flex;gap:10px;align-items:flex-start;color:#e6ecef}
+.brand li svg{flex:none;width:18px;height:18px;margin-top:3px;color:var(--sig)}
+.brand .btn{background:#fff;color:var(--ink)}
+.brand .btn:hover{background:var(--sig);color:#fff}
+
+.pd{display:grid;gap:24px;background:var(--paper);border-radius:14px;padding:16px}
+@media(min-width:900px){.pd{grid-template-columns:1fr 1fr;padding:28px;gap:40px}}
+.pd .gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pd .gal img{border-radius:8px;aspect-ratio:4/5;object-fit:cover;width:100%;height:100%}
+.pd .gal img:first-child{grid-column:1/-1;aspect-ratio:4/3}
+.pd .br{font:600 12px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+.pd h3{font:700 clamp(20px,2.4vw,28px)/1.1 var(--head);letter-spacing:-.01em;margin:0 0 12px}
+.pd .pr{font:700 24px/1 var(--head);margin:0 0 18px}
+.pd .opt{margin:0 0 16px}
+.pd .opt b{display:block;font-size:13px;font-weight:600;margin:0 0 8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{min-width:46px;height:40px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:14px}
+.chips button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid #fff;outline:1px solid var(--line);cursor:pointer;padding:0}
+.sw.on{outline:2px solid var(--ink)}
+.spec{width:100%;border-collapse:collapse;font-size:14px;margin:18px 0 0}
+.spec td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
+.spec td:first-child{color:var(--mut);width:44%;padding-right:12px}
+.hint{display:inline-block;margin-top:14px;font-size:13px;background:#fff1e9;color:var(--sig2);border-radius:6px;padding:7px 10px}
+
+.split{display:grid;gap:16px}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr;gap:20px}}
+.tile{position:relative;border-radius:14px;overflow:hidden;min-height:360px;background:var(--ink)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile .tt{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(to top,#0f1720e6,#0f172000);color:#fff}
+.tile h3{font:700 clamp(20px,2.4vw,28px)/1.05 var(--head);margin:0 0 8px;letter-spacing:-.01em}
+.tile p{margin:0;color:#dbe3e8;max-width:40ch;font-size:15px}
+
+.ft{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--mut);font-size:14px}
+.ft .w{display:grid;gap:14px}
+@media(min-width:900px){.ft .w{grid-template-columns:2fr 1fr 1fr}}
+.ft b{color:var(--ink);display:block;margin-bottom:6px}
+.ft a,.ft span{display:block;margin:0 0 4px}
+.ft a:hover{color:var(--sig2)}
+</style>
+</head>
+<body>
+<div class="demo"><b>Демо-версия для партнёров.</b> Товары и цены условные, фото со свободной лицензией.</div>
+
+<header class="hd"><div class="w">
+  <a class="logo" href="./"><i></i>SOS</a>
+  <nav>
+    <a href="#catalog">Одежда</a>
+    <a href="#catalog">Снаряжение</a>
+    <a href="#brand">Бренды</a>
+    <a href="#store">Магазин в Омске</a>
+  </nav>
+  <div class="ic">
+    <button aria-label="Поиск"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button aria-label="Избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+    <button aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cnt" id="cnt">0</span></button>
+  </div>
+</div></header>
+
+<section class="hero">
+  <img src="img/hero.jpg" alt="Сноубордист на склоне среди заснеженной тайги" width="1280" height="960">
+  <div class="tx"><div class="w">
+    <h1>Экипировка для сибирской зимы</h1>
+    <p>Горнолыжная одежда и снаряжение премиум-класса. Сейчас онлайн, скоро магазин у склона в Омске.</p>
+    <a class="btn" href="#catalog">Смотреть каталог <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></a>
+  </div></div>
+</section>
+
+<div class="w">
+  <nav class="cats" aria-label="Категории">
+    <a class="on" href="#catalog">Всё</a><a href="#catalog">Куртки</a><a href="#catalog">Брюки и комбинезоны</a><a href="#catalog">Термобельё</a><a href="#catalog">Шапки и перчатки</a><a href="#catalog">Маски и шлемы</a><a href="#catalog">Лыжи и сноуборды</a><a href="#catalog">Детям</a>
+  </nav>
+</div>
+
+<section class="sec" id="catalog"><div class="w">
+  <h2>Новое в сезоне</h2>
+  <p class="sub">Каждая карточка с температурным режимом: в Омске это важнее, чем цвет.</p>
+  <div class="grid">
+    <article class="pc"><div class="ph"><img src="img/jacket.jpg" alt="Пуховая куртка синего цвета" loading="lazy" style="object-position:50% 45%"><span class="badge t">до −30 °C</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Бренд-партнёр</p><h3>Пуховик горнолыжный мужской</h3><p class="pr">42 900 ₽</p><div class="sz"><span>S</span><span>M</span><span>L</span><span>XL</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/ski.jpg" alt="Горнолыжник в красном костюме на трассе" loading="lazy" style="object-position:62% 40%"><span class="badge t">до −25 °C</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Бренд-партнёр</p><h3>Костюм горнолыжный, мембрана 20 000 мм</h3><p class="pr">64 500 ₽</p><div class="sz"><span>46</span><span>48</span><span>50</span><span>52</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/beanies.jpg" alt="Двое в вязаных шапках сидят на снегу" loading="lazy" style="object-position:42% 40%"><span class="badge">Шерсть мериноса</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Российский бренд</p><h3>Шапка вязаная с подкладкой</h3><p class="pr">3 900 ₽</p><div class="sz"><span>Один размер</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/board.jpg" alt="Сноубордист в шлеме и маске в облаке снега" loading="lazy" style="object-position:55% 45%"><span class="badge">Линза Photochromic</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Бренд-партнёр</p><h3>Маска горнолыжная с фотохромной линзой</h3><p class="pr">12 500 ₽</p><div class="sz"><span>M</span><span>L</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/powder.jpg" alt="Сноубордист в синей куртке режет свежий снег" loading="lazy" style="object-position:66% 55%"><span class="badge t">до −20 °C</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Бренд-партнёр</p><h3>Куртка для сноуборда, свободный крой</h3><p class="pr">38 700 ₽</p><div class="sz"><span>S</span><span>M</span><span>L</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/tour.jpg" alt="Лыжник с рюкзаком на заснеженной равнине" loading="lazy" style="object-position:58% 50%"><span class="badge">Для тура и бега</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Российский бренд</p><h3>Софтшелл-куртка для активного катания</h3><p class="pr">19 900 ₽</p><div class="sz"><span>S</span><span>M</span><span>L</span><span>XL</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/beanies.jpg" alt="Женщина в розовой куртке и вязаной шапке на снегу" loading="lazy" style="object-position:72% 45%"><span class="badge t">до −30 °C</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Российский бренд</p><h3>Куртка женская утеплённая</h3><p class="pr">34 900 ₽</p><div class="sz"><span>XS</span><span>S</span><span>M</span><span>L</span></div></article>
+    <article class="pc"><div class="ph"><img src="img/ski.jpg" alt="Горнолыжник в шлеме крупным планом" loading="lazy" style="object-position:52% 22%"><span class="badge">Система MIPS</span><button class="fav" aria-label="В избранное"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button></div><p class="br">Бренд-партнёр</p><h3>Шлем горнолыжный с вентиляцией</h3><p class="pr">14 900 ₽</p><div class="sz"><span>S</span><span>M</span><span>L</span></div></article>
+  </div>
+</div></section>
+
+<section class="sec" id="brand" style="padding-top:8px"><div class="w">
+  <div class="brand">
+    <div class="im"><img src="img/powder.jpg" alt="Сноубордист на свежем снегу" loading="lazy"></div>
+    <div class="bt">
+      <span class="lbl">Раздел бренда</span>
+      <h2>Здесь будет ваша коллекция</h2>
+      <p>У каждого бренда-партнёра своя страница: история марки, вся коллекция с фильтрами и контент, который мы снимаем на омских склонах.</p>
+      <ul>
+        <li><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5l4 4 8-9"/></svg>Своя страница бренда и подборки на главной</li>
+        <li><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5l4 4 8-9"/></svg>Съёмка вашей одежды на склоне, видео для соцсетей</li>
+        <li><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5l4 4 8-9"/></svg>Описания под нашу аудиторию: температура, активность, посадка</li>
+        <li><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5l4 4 8-9"/></svg>Офлайн-витрина в горнолыжном центре после открытия</li>
+      </ul>
+      <a class="btn" href="#product">Как выглядит карточка <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="product" style="padding-top:8px"><div class="w">
+  <h2>Карточка товара</h2>
+  <p class="sub">Так будет выглядеть ваша модель. Все поля берём из карточек, которые присылает поставщик.</p>
+  <div class="pd">
+    <div class="gal">
+      <img src="img/ski.jpg" alt="Горнолыжник в костюме на трассе" loading="lazy" style="object-position:60% 40%">
+      <img src="img/powder.jpg" alt="Куртка в движении" loading="lazy" style="object-position:66% 55%">
+      <img src="img/jacket.jpg" alt="Куртка крупным планом" loading="lazy" style="object-position:50% 50%">
+    </div>
+    <div>
+      <p class="br">Бренд-партнёр</p>
+      <h3>Костюм горнолыжный, мембрана 20 000 мм</h3>
+      <p class="pr">64 500 ₽</p>
+      <div class="opt"><b>Цвет</b><div class="chips" data-group>
+        <button class="sw on" style="background:#b3261e" aria-label="Красный"></button>
+        <button class="sw" style="background:#1d2a3a" aria-label="Тёмно-синий"></button>
+        <button class="sw" style="background:#e9ecee" aria-label="Белый"></button>
+      </div></div>
+      <div class="opt"><b>Размер</b><div class="chips" data-group>
+        <button>46</button><button class="on">48</button><button>50</button><button>52</button><button>54</button>
+      </div></div>
+      <button class="btn" id="add">В корзину</button>
+      <table class="spec">
+        <tr><td>Температурный режим</td><td>до −25 °C при активном катании</td></tr>
+        <tr><td>Мембрана</td><td>20 000 мм водостойкость, 20 000 г/м² паропроницаемость</td></tr>
+        <tr><td>Утеплитель</td><td>синтетический, 120 г/м² куртка, 80 г/м² брюки</td></tr>
+        <tr><td>Состав</td><td>100% полиэстер</td></tr>
+        <tr><td>Посадка</td><td>регулярная, рост модели 182 см, размер 48</td></tr>
+        <tr><td>Страна производства</td><td>из карточки поставщика</td></tr>
+        <tr><td>Маркировка</td><td>Честный знак</td></tr>
+      </table>
+      <span class="hint">Пример: значения заменяются данными поставщика</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="store" style="padding-top:8px"><div class="w">
+  <div class="split">
+    <div class="tile"><img src="img/powder.jpg" alt="Съёмка на склоне" loading="lazy" style="object-position:70% 50%"><div class="tt"><h3>Снимаем сами</h3><p>Одежду партнёров показываем в деле: на омских склонах, в мороз, в движении. Контент можно использовать и бренду.</p></div></div>
+    <div class="tile"><img src="img/lift.jpg" alt="Подъёмник на горнолыжном склоне" loading="lazy" style="object-position:50% 40%"><div class="tt"><h3>Магазин у склона</h3><p>После интернет-магазина откроем офлайн-магазин в горнолыжном центре SOS в Омске: примерка, подбор, сервис.</p></div></div>
+  </div>
+</div></section>
+
+<footer class="ft"><div class="w">
+  <div><b>SOS</b>Горнолыжный клуб и магазин экипировки, Омск. Демо-версия сайта для переговоров с поставщиками. Фото: Unsplash через Wikimedia Commons, лицензия CC0.</div>
+  <div><b>Покупателям</b><span>Доставка и оплата</span><span>Возврат</span><span>Таблица размеров</span></div>
+  <div><b>Партнёрам</b><a href="#brand">Стать брендом-партнёром</a><a href="#product">Требования к карточкам</a></div>
+</div></footer>
+
+<script>
+document.querySelectorAll('[data-group]').forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
+document.querySelectorAll('.fav').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on')})});
+var n=0;document.getElementById('add').addEventListener('click',function(){n++;document.getElementById('cnt').textContent=n;this.textContent='Добавлено'; var t=this;setTimeout(function(){t.textContent='В корзину'},1400)});
+</script>
+</body>
+</html>
