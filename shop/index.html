@@ -182,6 +182,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pc .ph{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#e7e7e4;transition:transform .25s ease}
 .pc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .5s var(--ease)}
 .pc:hover .ph img{transform:scale(1.06)}
+.tint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;opacity:0;transition:opacity .45s var(--ease),background-color .45s,transform .7s var(--ease);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:cover;mask-size:cover}
+.pc:hover .tint{transform:scale(1.06)}
+.gal .main.zoom .tint{opacity:0!important}
 .pc .shine{position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),#ffffff40,transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
 .pc:hover .shine{opacity:1}
 .badge{position:absolute;left:8px;top:8px;background:var(--blk);color:#fff;border-radius:7px;padding:5px 8px;font:700 11px/1 var(--mono);display:flex;gap:6px;align-items:center}
@@ -524,10 +527,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 <section class="sec" id="product"><div class="w">
   <p class="kick rv">Карточка товара</p>
   <h2 class="h2 rv">Так будет выглядеть ваша модель</h2>
-  <p class="sub rv">Все поля берём из карточек поставщика. Нажми на фото, чтобы приблизить, на цвет, чтобы перекрасить.</p>
+  <p class="sub rv">Все поля берём из карточек поставщика. Нажми на фото, чтобы приблизить, на цвет, чтобы перекрасить костюм.</p>
   <div class="pd rv">
     <div class="gal">
-      <div class="main" id="gMain"><img src="img/look.jpg" alt="Горнолыжный костюм на трассе" id="gImg"></div>
+      <div class="main" id="gMain"><img src="img/look.jpg" alt="Горнолыжный костюм на трассе" id="gImg"><span class="tint" id="gTint" style="-webkit-mask-image:url(img/look-m.png);mask-image:url(img/look-m.png);-webkit-mask-position:50% 50%;mask-position:50% 50%"></span></div>
       <div class="thumbs" id="thumbs">
         <button class="on" data-src="img/look.jpg" data-pos="50% 50%" aria-label="Фото 1"><img src="img/look.jpg" alt="" loading="lazy"></button>
         <button data-src="img/ski.jpg" data-pos="72% 62%" aria-label="Фото 2"><img src="img/ski.jpg" alt="" style="object-position:72% 62%" loading="lazy"></button>
@@ -540,10 +543,10 @@ button{font:inherit;color:inherit;cursor:pointer}
       <h3>Костюм горнолыжный Signal</h3>
       <p class="pr">64 500 ₽ <s>71 000 ₽</s></p>
       <div class="opt"><b>Цвет <span id="cName">красный</span></b><div class="sws" id="sws">
-        <button class="on" style="background:#c8102e" data-name="красный" data-f="none" aria-label="Красный"></button>
-        <button style="background:#1f5fa8" data-name="синий" data-f="hue-rotate(215deg) saturate(1.1)" aria-label="Синий"></button>
-        <button style="background:#2f8f4e" data-name="хвойный" data-f="hue-rotate(115deg) saturate(.8)" aria-label="Зелёный"></button>
-        <button style="background:#16181d" data-name="чёрный" data-f="saturate(0) brightness(.85) contrast(1.15)" aria-label="Чёрный"></button>
+        <button class="on" style="background:#c8102e" data-name="красный" data-t="" aria-label="Красный"></button>
+        <button style="background:#1f5fa8" data-name="синий" data-t="#1f5fa8" aria-label="Синий"></button>
+        <button style="background:#2f8f4e" data-name="хвойный" data-t="#2f8f4e" aria-label="Зелёный"></button>
+        <button style="background:#55595f" data-name="графит" data-t="#7a7f86" aria-label="Графит"></button>
       </div></div>
       <div class="opt"><b>Размер <span>таблица размеров</span></b><div class="sizes" id="sizes">
         <button>46</button><button class="on">48</button><button>50</button><button disabled>52</button><button>54</button>
@@ -726,20 +729,24 @@ $('#liveBtn').addEventListener('click',function(){var m=$('#liveMsg');m.textCont
   .catch(function(){m.textContent='Не получилось достать погоду, двигай термометр вручную.'})});
 setT(-18,false);
 
+// перекраска одежды по маске
+function tint(el,c){if(!el)return;if(c){el.style.backgroundColor=c;el.style.opacity=1}else el.style.opacity=0}
+
 // каталог
-var RED='none',BLUE='hue-rotate(215deg) saturate(1.1)',GREEN='hue-rotate(115deg) saturate(.8)',BLACK='saturate(0) brightness(.85) contrast(1.15)',RED_FROM_BLUE='hue-rotate(150deg) saturate(1.3)';
+var SW_RED=[['#c8102e',null],['#1f5fa8','#1f5fa8'],['#2f8f4e','#2f8f4e'],['#55595f','#7a7f86']];
+var SW_BLUE=[['#2a6fa8',null],['#c8102e','#d01020'],['#2f8f4e','#2f8f4e'],['#55595f','#7a7f86']];
 var P=[
- {n:'Костюм горнолыжный Signal',b:'Бренд-партнёр',c:'Костюмы',p:64500,t:-25,img:'look.jpg',pos:'50% 55%',sz:['46','48','50','52'],sw:[['#c8102e',RED],['#1f5fa8',BLUE],['#16181d',BLACK]]},
- {n:'Пуховик горнолыжный мужской',b:'Бренд-партнёр',c:'Куртки',p:42900,t:-30,img:'jacket.jpg',pos:'50% 45%',sz:['S','M','L','XL'],sw:[['#2a6fa8','none'],['#c8102e',RED_FROM_BLUE],['#16181d',BLACK]]},
+ {n:'Костюм горнолыжный Signal',b:'Бренд-партнёр',c:'Костюмы',p:64500,t:-25,img:'look.jpg',pos:'50% 55%',m:'look-m.png',sz:['46','48','50','52'],sw:SW_RED},
+ {n:'Пуховик горнолыжный мужской',b:'Бренд-партнёр',c:'Куртки',p:42900,t:-30,img:'jacket.jpg',pos:'50% 45%',m:'jacket-m.png',sz:['S','M','L','XL'],sw:SW_BLUE},
  {n:'Куртка женская утеплённая',b:'Российский бренд',c:'Куртки',p:34900,t:-30,img:'beanies.jpg',pos:'72% 45%',sz:['XS','S','M','L']},
- {n:'Куртка для сноуборда, свободный крой',b:'Бренд-партнёр',c:'Куртки',p:38700,t:-20,img:'powder.jpg',pos:'66% 55%',sz:['S','M','L'],sw:[['#2a6fa8','none'],['#c8102e',RED_FROM_BLUE],['#2f8f4e','hue-rotate(-80deg) saturate(.8)']]},
+ {n:'Куртка для сноуборда, свободный крой',b:'Бренд-партнёр',c:'Куртки',p:38700,t:-20,img:'powder.jpg',pos:'66% 55%',m:'powder-m.png',sz:['S','M','L'],sw:SW_BLUE},
  {n:'Софтшелл для активного катания',b:'Российский бренд',c:'Флис и софтшелл',p:19900,t:-12,img:'tour.jpg',pos:'58% 50%',sz:['S','M','L','XL']},
- {n:'Брюки горнолыжные Signal',b:'Бренд-партнёр',c:'Брюки',p:27900,t:-25,img:'look.jpg',pos:'38% 78%',sz:['46','48','50','52'],sw:[['#c8102e',RED],['#1f5fa8',BLUE],['#16181d',BLACK]]},
+ {n:'Брюки горнолыжные Signal',b:'Бренд-партнёр',c:'Брюки',p:27900,t:-25,img:'look.jpg',pos:'38% 78%',m:'look-m.png',sz:['46','48','50','52'],sw:SW_RED},
  {n:'Термобельё, меринос, комплект',b:'Российский бренд',c:'Термобельё',p:9400,t:-30,img:'tour.jpg',pos:'62% 46%',sz:['S','M','L']},
  {n:'Куртка горнолыжная для подростков',b:'Бренд-партнёр',c:'Куртки',p:24900,t:-25,img:'board.jpg',pos:'55% 45%',sz:['146','152','158','164']}
 ];
 var cats=['Всё'];P.forEach(function(x){if(cats.indexOf(x.c)<0)cats.push(x.c)});
-$('#grid').innerHTML=P.map(function(x,i){return '<article class="pc" data-c="'+x.c+'"><div class="ph"><img src="img/'+x.img+'" alt="'+x.n+'" loading="lazy" style="object-position:'+x.pos+'"><span class="shine"></span><span class="badge"><i></i>до '+neg(x.t)+' °C</span><button class="fav" aria-label="В избранное">'+heart+'</button><button class="qadd" data-add="'+i+'">Быстро в корзину</button></div><p class="br">'+x.b+'</p><h3>'+x.n+'</h3><div class="row"><p class="pr">'+fmt(x.p)+'</p>'+(x.sw?'<div class="sw">'+x.sw.map(function(s,k){return '<button style="background:'+s[0]+'" data-f="'+s[1]+'" aria-label="Цвет '+(k+1)+'"'+(k?'':' class="on"')+'></button>'}).join('')+'</div>':'')+'</div><div class="sz">'+x.sz.map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></article>'}).join('');
+$('#grid').innerHTML=P.map(function(x,i){return '<article class="pc" data-c="'+x.c+'"><div class="ph"><img src="img/'+x.img+'" alt="'+x.n+'" loading="lazy" style="object-position:'+x.pos+'">'+(x.m?'<span class="tint" style="-webkit-mask-image:url(img/'+x.m+');mask-image:url(img/'+x.m+');-webkit-mask-position:'+x.pos+';mask-position:'+x.pos+'"></span>':'')+'<span class="shine"></span><span class="badge"><i></i>до '+neg(x.t)+' °C</span><button class="fav" aria-label="В избранное">'+heart+'</button><button class="qadd" data-add="'+i+'">Быстро в корзину</button></div><p class="br">'+x.b+'</p><h3>'+x.n+'</h3><div class="row"><p class="pr">'+fmt(x.p)+'</p>'+(x.sw?'<div class="sw">'+x.sw.map(function(s,k){return '<button style="background:'+s[0]+'" data-t="'+(s[1]||'')+'" aria-label="Цвет '+(k+1)+'"'+(k?'':' class="on"')+'></button>'}).join('')+'</div>':'')+'</div><div class="sz">'+x.sz.map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></article>'}).join('');
 $('#chips').innerHTML=cats.map(function(c,i){return '<button role="tab" class="'+(i?'':'on')+'" data-cat="'+c+'">'+c+'</button>'}).join('');
 var cards=[].slice.call(document.querySelectorAll('.pc'));
 function count(){$('#found').textContent=cards.filter(function(c){return !c.classList.contains('hide')}).length+' из '+cards.length}
@@ -747,7 +754,7 @@ count();
 $('#chips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(this.children,function(x){x.classList.remove('on')});b.classList.add('on');var c=b.dataset.cat,n=0;
   cards.forEach(function(card){var show=c==='Всё'||card.dataset.c===c;
     if(show){if(card.classList.contains('hide')){card.classList.remove('hide');card.classList.add('enter');(function(cd,k){setTimeout(function(){cd.classList.remove('enter')},30+k*50)})(card,n)}n++}else card.classList.add('hide')});count()});
-$('#grid').addEventListener('click',function(e){var s=e.target.closest('.sw button');if(s){[].forEach.call(s.parentNode.children,function(x){x.classList.remove('on')});s.classList.add('on');s.closest('.pc').querySelector('.ph img').style.filter=s.dataset.f}});
+$('#grid').addEventListener('click',function(e){var s=e.target.closest('.sw button');if(s){[].forEach.call(s.parentNode.children,function(x){x.classList.remove('on')});s.classList.add('on');tint(s.closest('.pc').querySelector('.tint'),s.dataset.t)}});
 if(matchMedia('(hover:hover)').matches&&!reduce){cards.forEach(function(card){var ph=card.querySelector('.ph');
   ph.addEventListener('pointermove',function(e){var r=ph.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;ph.style.transform='perspective(800px) rotateY('+((x-.5)*8)+'deg) rotateX('+((.5-y)*8)+'deg)';ph.style.setProperty('--mx',x*100+'%');ph.style.setProperty('--my',y*100+'%')});
   ph.addEventListener('pointerleave',function(){ph.style.transform=''})})}
@@ -768,10 +775,11 @@ $('#flips').addEventListener('click',function(e){var b=e.target.closest('[data-a
   var f=e.target.closest('.flip');if(f)f.classList.toggle('on')});
 
 // карточка товара
+var gColor='';
 $('#thumbs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(this.children,function(x){x.classList.remove('on')});b.classList.add('on');
-  var im=$('#gImg');$('#gMain').classList.remove('zoom');im.style.opacity=0;setTimeout(function(){im.src=b.dataset.src;im.style.objectPosition=b.dataset.pos;im.style.opacity=1},200)});
+  var im=$('#gImg');$('#gMain').classList.remove('zoom');im.style.opacity=0;tint($('#gTint'),'');setTimeout(function(){im.src=b.dataset.src;im.style.objectPosition=b.dataset.pos;im.style.opacity=1;if(b.dataset.src==='img/look.jpg')tint($('#gTint'),gColor)},200)});
 $('#gMain').addEventListener('click',function(e){var r=this.getBoundingClientRect();$('#gImg').style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';this.classList.toggle('zoom')});
-$('#sws').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(this.children,function(x){x.classList.remove('on')});b.classList.add('on');$('#cName').textContent=b.dataset.name;$('#gImg').style.filter=b.dataset.f;document.querySelectorAll('#thumbs img').forEach(function(t){t.style.filter=b.dataset.f})});
+$('#sws').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(this.children,function(x){x.classList.remove('on')});b.classList.add('on');$('#cName').textContent=b.dataset.name;gColor=b.dataset.t;tint($('#gTint'),$('#gImg').getAttribute('src')==='img/look.jpg'?gColor:'')});
 $('#sizes').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;[].forEach.call(this.children,function(x){x.classList.remove('on')});b.classList.add('on')});
 $('#pdAdd').addEventListener('click',function(){var s=document.querySelector('#sizes .on');add([{n:'Костюм горнолыжный Signal, '+$('#cName').textContent,p:64500,img:'look.jpg',s:s?s.textContent:'48'}],this)});
 
