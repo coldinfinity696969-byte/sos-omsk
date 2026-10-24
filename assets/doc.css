@@ -7,8 +7,8 @@
   --snow:#f3f5f4;
   --paper:#ffffff;
   --ice:#e3eef2;
-  --signal:#ff4f00;
-  --signal-ink:#c23a00;
+  --signal:#e10a0a;
+  --signal-ink:#b00000;
   --ok:#1f7a4d;
   --warn:#9a6200;
   --radius:10px;
@@ -62,7 +62,7 @@ small,.small{font-size:14px;color:var(--muted)}
 .verdict p{color:#dfe6ea}
 .verdict p:last-child{margin-bottom:0}
 
-.note{border-left:3px solid var(--signal);background:#fff4ee;padding:14px 16px;border-radius:0 8px 8px 0;margin:0 0 18px;max-width:72ch}
+.note{border-left:3px solid var(--signal);background:#fdeceb;padding:14px 16px;border-radius:0 8px 8px 0;margin:0 0 18px;max-width:72ch}
 .note p:last-child{margin-bottom:0}
 .check{background:var(--ice);padding:14px 16px;border-radius:8px;margin:0 0 18px;max-width:72ch}
 .check p:last-child{margin-bottom:0}
