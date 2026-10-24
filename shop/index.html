@@ -127,6 +127,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .stage .tv small{font:700 .24em/1 var(--mono);color:var(--gry);vertical-align:top;margin-left:2px}
 .stage .tn{position:absolute;left:20px;top:clamp(80px,12vw,122px);font:700 13px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--red)}
 .stage svg{width:min(330px,82%);height:auto;position:relative;z-index:1}
+@media(max-width:959px){.stage{flex-direction:column;align-items:flex-start;padding:16px 18px 0;min-height:0}.stage .tv,.stage .tn{position:static}.stage .tn{margin:8px 0 6px}.stage svg{align-self:center;width:min(300px,78%)}}
 .lay{transition:opacity .5s var(--ease),transform .55s var(--ease);transform-box:fill-box;transform-origin:50% 0}
 .lay.off{opacity:0;transform:translateY(-18px) scale(1.04)}
 .lay [fill="currentColor"],.lay [data-c]{transition:fill .45s}
@@ -656,8 +657,8 @@ document.querySelectorAll('[data-toast]').forEach(function(b){b.addEventListener
 
 // образ с точками
 var HS=[
- {x:59.7,y:25,n:'Шлем горнолыжный с вентиляцией',c:'Шлем',p:14900,img:'look.jpg',pos:'60% 25%'},
- {x:64.5,y:32.5,n:'Маска с фотохромной линзой',c:'Маска',p:12500,img:'look.jpg',pos:'64% 32%'},
+ {x:57,y:21,n:'Шлем горнолыжный с вентиляцией',c:'Шлем',p:14900,img:'look.jpg',pos:'60% 25%'},
+ {x:68,y:33,n:'Маска с фотохромной линзой',c:'Маска',p:12500,img:'look.jpg',pos:'64% 32%'},
  {x:54,y:47,n:'Куртка горнолыжная Signal',c:'Куртка',p:42900,img:'look.jpg',pos:'55% 46%'},
  {x:70.2,y:74.3,n:'Перчатки с мембраной',c:'Перчатки',p:6900,img:'look.jpg',pos:'70% 74%'},
  {x:41.9,y:72.2,n:'Брюки горнолыжные Signal',c:'Брюки',p:27900,img:'look.jpg',pos:'42% 72%'}
@@ -667,10 +668,10 @@ HS.forEach(function(h,i){
   var b=document.createElement('button');b.className='hs';b.style.left=h.x+'%';b.style.top=h.y+'%';b.style.transitionDelay=(i*.12)+'s';b.setAttribute('aria-label',h.c);
   var p=document.createElement('div');p.className='pop';
   p.innerHTML='<div class="pi"><img src="img/'+h.img+'" alt="" style="object-position:'+h.pos+';transform:scale(2.4);transform-origin:'+h.pos+'"></div><div><small>'+h.c+'</small><b>'+h.n+'</b><div class="pp">'+fmt(h.p)+'</div><button>В корзину</button></div>';
-  var right=h.x>55;p.style.top='calc('+h.y+'% + 22px)';
-  if(right){p.style.right=(100-h.x-4)+'%'}else{p.style.left=Math.max(0,h.x-6)+'%'}
-  if(h.y>60){p.style.top='auto';p.style.bottom='calc('+(100-h.y)+'% + 22px)'}
-  b.addEventListener('click',function(e){e.stopPropagation();var on=!b.classList.contains('on');closePops();if(on){b.classList.add('on');p.classList.add('on')}});
+  function place(){var bw=lb.clientWidth,bh=lb.clientHeight,pw=p.offsetWidth,ph=p.offsetHeight,cx=bw*h.x/100,cy=bh*h.y/100;
+    p.style.left=Math.max(8,Math.min(bw-pw-8,cx-pw/2))+'px';
+    p.style.top=(h.y>55?cy-ph-24:cy+24)+'px'}
+  b.addEventListener('click',function(e){e.stopPropagation();var on=!b.classList.contains('on');closePops();if(on){place();b.classList.add('on');p.classList.add('on')}});
   p.querySelector('button').addEventListener('click',function(e){e.stopPropagation();add([{n:h.n,p:h.p,img:h.img,pos:h.pos}],this);closePops()});
   lb.appendChild(b);lb.appendChild(p);
 });
